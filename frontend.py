@@ -3,7 +3,7 @@ import requests
 
 BACKEND_URL = "http://localhost:8000/ask"
 
-# st.set_page_config must be FIRST
+
 st.set_page_config(page_title="AI Mental Health Therapist", layout="wide")
 
 if "user" not in st.session_state:
@@ -14,7 +14,7 @@ if "chat_history" not in st.session_state:
 
 # Show login/register if not logged in
 if st.session_state.user is None:
-    st.title("🧠 SafeSpace – AI Mental Health Therapist")
+    st.title("🧠 Sahaara – AI Mental Health Therapist")
     tab1, tab2 = st.tabs(["Login", "Register"])
 
     with tab1:
@@ -61,7 +61,7 @@ else:
 
         response = requests.post(BACKEND_URL, json={
             "message": user_input,
-            "phone": st.session_state.user["phone"] , # send user phone
+            "phone": st.session_state.user["phone"] ,  
             "location": st.session_state.user_location
         })
 
