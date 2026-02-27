@@ -1,4 +1,4 @@
-# database.py
+ 
 import sqlite3
 
 def init_db():
@@ -25,7 +25,7 @@ def register_user(name, email, password, phone):
         conn.commit()
         return True
     except sqlite3.IntegrityError:
-        return False  # email already exists
+        return False  
     finally:
         conn.close()
 
@@ -35,4 +35,4 @@ def get_user(email, password):
     cursor.execute("SELECT * FROM users WHERE email=? AND password=?", (email, password))
     user = cursor.fetchone()
     conn.close()
-    return user  # returns (id, name, email, password, phone) or None
+    return user   
