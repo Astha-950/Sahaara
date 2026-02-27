@@ -14,8 +14,8 @@ class Query(BaseModel):
     location: str  
 
 from database import init_db, register_user, get_user
-
-init_db()  # run once on startup
+ # run once on startup
+init_db()  
 
 class RegisterRequest(BaseModel):
     name: str
@@ -51,14 +51,14 @@ async def ask(query: Query):
     stream = graph.stream(inputs, stream_mode="updates")
     
     for s in stream:
-        print("CHUNK:", s)  # add this
+        print("CHUNK:", s)   
     
-    stream = graph.stream(inputs, stream_mode="updates")  # re-run since consumed
+    stream = graph.stream(inputs, stream_mode="updates")   
     tool_called_name, final_response = parse_response(stream)
-    print("TOOL CALLED:", tool_called_name)  # add this
+    print("TOOL CALLED:", tool_called_name)   
     if tool_called_name == "emergency_call_tool":
         from tools import call_emergency
-        call_emergency(query.phone)  # pass user phone
+        call_emergency(query.phone)   
     return {"response": final_response, "tool_called": tool_called_name}
          
 
