@@ -62,7 +62,7 @@ tools = [ask_mental_health_specialist, emergency_call_tool, find_nearby_therapis
  
 llm = ChatGroq(
     model="meta-llama/llama-4-scout-17b-16e-instruct",
-    temperature=0,  # set to 0, not 0.2
+    temperature=0,   
     api_key=GROQ_API_KEY
 )
 graph = create_agent(llm, tools=tools)
